@@ -5,14 +5,16 @@
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
+    "@testing-library/user-event": "^12.0.11",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/styled-components": "^5.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
+    "styled-components": "^5.1.1",
     "typescript": "~3.7.2"
   },
   "scripts": {
@@ -22,7 +24,45 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "prettier",
+      "prettier/react"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true,
+        "tsx": true,
+        "ts": true
+      }
+    },
+    "plugins": [
+      "react",
+      "prettier"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.ts?(x)",
+          "**.test.ts?(x)"
+        ],
+        "rules": {
+          "prettier/prettier": [
+            "error",
+            {
+              "trailingComma": "none",
+              "printWidth": 80,
+              "tabWidth": 2,
+              "semi": false,
+              "singleQuote": false
+            }
+          ]
+        }
+      }
+    ]
   },
   "browserslist": {
     "production": [
@@ -35,5 +75,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.2",
+    "jest-styled-components": "^7.0.2",
+    "prettier": "^2.0.5"
   }
 }
