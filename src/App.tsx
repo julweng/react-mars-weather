@@ -17,6 +17,7 @@ const App = () => {
   const [weather, setWeather] = useState<Weather[] | []>([])
   const [selectedSol, setSelectedSol] = useState<number>(0)
   const [metric, setMetric] = useState<boolean>(true)
+  const [previous, setPrevious] = useState<boolean>(false)
 
   useEffect(() => {
     const fetchFromAPI = async () => {
@@ -55,7 +56,7 @@ const App = () => {
               <h1 className="main-title">
                 Latest Weather at Elysium Plantitia
               </h1>
-              <WeatherData sol={weather[selectedSol]} isMetric={isMetric} />
+              <WeatherData sol={weather[selectedSol]} isMetric={metric} />
               <InfoWrapper>
                 <Info />
                 <Unit metric={metric} setMetric={setMetric} />
@@ -63,7 +64,13 @@ const App = () => {
             </>
           )}
         </MarsWeather>
-        <Previous />
+        <Previous
+          weather={weather}
+          previous={previous}
+          setPrevious={setPrevious}
+          setSelectedSol={setSelectedSol}
+          isMetric={metric}
+        />
       </AppWrapper>
     </>
   )

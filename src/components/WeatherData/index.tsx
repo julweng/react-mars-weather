@@ -28,7 +28,7 @@ const WeatherData = ({ sol, isMetric }: WeatherDataProps) => (
                 ? formatTemperature(sol.maxTemp, isMetric)
                 : sol.maxTemp}
             </span>
-            <span> {isMetric ? " C" : " F"}</span>
+            <span> {isMetric ? " °C" : " °C"}</span>
           </p>
           <p className="reading">
             Low:
@@ -38,7 +38,7 @@ const WeatherData = ({ sol, isMetric }: WeatherDataProps) => (
                 ? formatTemperature(sol.minTemp, isMetric)
                 : sol.minTemp}
             </span>
-            °<span> {isMetric ? " C" : " F"}</span>
+            °<span> {isMetric ? " °C" : " °C"}</span>
           </p>
         </Temp>
 
