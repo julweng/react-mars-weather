@@ -6,8 +6,8 @@ export const formatTemperature = (
 	isMetric: boolean
 ): number => {
 	let returnTemp = temperature
-	if (isMetric) {
-		returnTemp = (temperature - 32) * (5 / 9)
+	if (!isMetric) {
+		returnTemp = temperature * 9 / 5 + 32
 	}
 	return Math.round(returnTemp)
 }

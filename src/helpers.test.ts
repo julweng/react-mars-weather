@@ -17,13 +17,13 @@ describe("formatDate", () => {
 
 describe("formatTemperature", () => {
   it("returns the rounded temperature in Celcius if isMetric is true", () => {
-    const temp = formatTemperature(350.45, false)
-    expect(temp).toEqual(177)
+    const temp = formatTemperature(123.45, true)
+    expect(temp).toEqual(123)
   })
 
   it("returns the rounded temperature in Fahrenheit if isMetric is false", () => {
-    const temp = formatTemperature(350.45, true)
-    expect(temp).toEqual(350)
+    const temp = formatTemperature(123.45, false)
+    expect(temp).toEqual(254)
   })
 })
 
