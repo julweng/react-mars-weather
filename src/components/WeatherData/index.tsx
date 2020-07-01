@@ -1,37 +1,62 @@
 import React from "react"
 import { formatTemperature } from "helpers"
-import { Wrapper, Date, Temp, Wind } from "./styles"
+import { Weather } from "types"
+import { Date, Temp, Wind, Wrapper } from "./styles"
 
-const WeatherData = ({ sol, isMetric }) => (
+type WeatherProps = {
+  sol: Weather | undefined
+  isMetric: boolean
+}
+
+const WeatherData = ({ sol, isMetric }: WeatherProps) => (
   <Wrapper>
-    <Date>
-      <h2>Header</h2>
-      <p>Text</p>
-    </Date>
+    {sol ? (
+      <>
+        <Date>
+          <h2>{sol.sol}</h2>
+          <p>{sol.date}</p>
+        </Date>
+        <Temp>
+          <h2 className="section-title">Temp</h2>
+          <p className="reading">
+            High:
+            <span>
+              {" "}
+              {/* if sol.maxTemp is number, format temp */}
+              {/* otherwise render sol.maxTemp which is "no Data" */}
+              {typeof sol.maxTemp === "number"
+                ? formatTemperature(sol.maxTemp, isMetric)
+                : sol.maxTemp}
+            </span>
+            <span> {isMetric ? " C" : " F"}</span>
+          </p>
+          <p className="reading">
+            Low:
+            <span>
+              {" "}
+              {typeof sol.minTemp === "number"
+                ? formatTemperature(sol.minTemp, isMetric)
+                : sol.minTemp}
+            </span>
+            °<span> {isMetric ? " C" : " F"}</span>
+          </p>
+        </Temp>
 
-    <Temp>
-      <h2 className="section-title">Temp</h2>
-      <p className="reading">
-        High:
-        <span> Temp</span>°<span> F or C</span>
-      </p>
-      <p className="reading">
-        Low:
-        <span> Temp</span>°<span> F or C</span>
-      </p>
-    </Temp>
+        <Wind deg={sol.windDirectionDegrees}>
+          <h2 className="section-title">Wind</h2>
+          <p className="reading">
+            <span>{sol.windSpeed}</span>
+            <span>{isMetric ? " kph" : " mph"}</span>
+          </p>
 
-    <Wind deg={180}>
-      <h2 className="section-title">Wind</h2>
-      <p className="reading">
-        <span>Speed</span>
-        <span>kph or mph</span>
-      </p>
-
-      <div className="wind__direction">
-        <div className="wind__arrow"></div>
-      </div>
-    </Wind>
+          <div className="wind__direction">
+            <div className="wind__arrow"></div>
+          </div>
+        </Wind>
+      </>
+    ) : (
+      <h2>No data</h2>
+    )}
   </Wrapper>
 )
 

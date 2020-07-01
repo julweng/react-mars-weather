@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { formatDate } from "helpers"
 import { API_URL } from "api"
-import { Weather } from "types/weatherType"
+import { Weather } from "types"
 import { Info, Previous, Unit, WeatherData } from "components"
 import BGImage from "img/mars.jpg"
 import { AppWrapper, GlobalStyle, InfoWrapper, MarsWeather, Spinner } from "./App.styles"
@@ -9,7 +9,7 @@ import { AppWrapper, GlobalStyle, InfoWrapper, MarsWeather, Spinner } from "./Ap
 const App = () => {
   const [loading, setLoading] = useState<boolean>(true)
   const [weather, setWeather] = useState<Weather[] | []>([])
-  const [selectSol, setSelectedSol] = useState<number | null>(null)
+  const [selectedSol, setSelectedSol] = useState<number>(0)
   const [metric, setMetric] = useState<boolean>(true)
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const App = () => {
               <h1 className="main-title">
                 Latest Weather at Elysium Plantitia
               </h1>
-              <WeatherData />
+              <WeatherData sol={weather[selectedSol]} isMetric={isMetric} />
               <InfoWrapper>
                 <Info />
                 <Unit />
