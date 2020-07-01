@@ -3,12 +3,12 @@ import { formatTemperature } from "helpers"
 import { Weather } from "types"
 import { Date, Temp, Wind, Wrapper } from "./styles"
 
-type WeatherProps = {
+type WeatherDataProps = {
   sol: Weather | undefined
   isMetric: boolean
 }
 
-const WeatherData = ({ sol, isMetric }: WeatherProps) => (
+const WeatherData = ({ sol, isMetric }: WeatherDataProps) => (
   <Wrapper>
     {sol ? (
       <>

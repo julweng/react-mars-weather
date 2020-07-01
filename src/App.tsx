@@ -4,7 +4,13 @@ import { API_URL } from "api"
 import { Weather } from "types"
 import { Info, Previous, Unit, WeatherData } from "components"
 import BGImage from "img/mars.jpg"
-import { AppWrapper, GlobalStyle, InfoWrapper, MarsWeather, Spinner } from "./App.styles"
+import {
+  AppWrapper,
+  GlobalStyle,
+  InfoWrapper,
+  MarsWeather,
+  Spinner
+} from "./App.styles"
 
 const App = () => {
   const [loading, setLoading] = useState<boolean>(true)
@@ -52,7 +58,7 @@ const App = () => {
               <WeatherData sol={weather[selectedSol]} isMetric={isMetric} />
               <InfoWrapper>
                 <Info />
-                <Unit />
+                <Unit metric={metric} setMetric={setMetric} />
               </InfoWrapper>
             </>
           )}
