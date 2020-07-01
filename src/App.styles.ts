@@ -1,8 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components"
 
-type Props = {
-  bgImage: string
-}
+type BGImage = string
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -38,7 +36,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
-    background-image: url(${(props: Props) => props.bgImage});
+    background-image: url(${({ bgImage }: { bgImage: BGImage }) => bgImage});
     background-size: cover;
     height: 100vh;
     color: var(--clr-light);
