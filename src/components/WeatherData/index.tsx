@@ -1,5 +1,5 @@
 import React from "react"
-import { formatTemperature } from "helpers"
+import { displaySpeed, formatTemperature } from "helpers"
 import { Weather } from "types"
 import { Date, Temp, Wind, Wrapper } from "./styles"
 
@@ -28,7 +28,7 @@ const WeatherData = ({ sol, isMetric }: WeatherDataProps) => (
                 ? formatTemperature(sol.maxTemp, isMetric)
                 : sol.maxTemp}
             </span>
-            <span> {isMetric ? " °C" : " °C"}</span>
+            <span> {isMetric ? " °C" : " °F"}</span>
           </p>
           <p className="reading">
             Low:
@@ -38,14 +38,14 @@ const WeatherData = ({ sol, isMetric }: WeatherDataProps) => (
                 ? formatTemperature(sol.minTemp, isMetric)
                 : sol.minTemp}
             </span>
-            °<span> {isMetric ? " °C" : " °C"}</span>
+            <span> {isMetric ? " °C" : " °F"}</span>
           </p>
         </Temp>
 
         <Wind deg={sol.windDirectionDegrees}>
           <h2 className="section-title">Wind</h2>
           <p className="reading">
-            <span>{sol.windSpeed}</span>
+            <span>{displaySpeed(sol.windSpeed, isMetric)}</span>
             <span>{isMetric ? " kph" : " mph"}</span>
           </p>
 
