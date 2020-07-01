@@ -51,7 +51,7 @@ export const Toggle = styled.button`
   width: 10rem;
   transform: translate(-50%, calc(-100% - 3rem));
   text-align: center;
-  font-size: var(--fs-h2);
+  font-size: var(--fs-h1);
   line-height: 1;
   clip-path: polygon(50% 0, 0 100%, 100% 100%);
   cursor: pointer;
@@ -65,7 +65,7 @@ export const Toggle = styled.button`
   span {
     display: block;
     transform: ${({ previous }: { previous: Previous }) =>
-      previous ? "rotate(180deg) translateY(-6px)" : "rotate(0)"};
+      previous ? "rotate(180deg) translateY(-4px)" : "rotate(0)"};
     transition: -webkit-transform 300ms ease;
     transition: transform 300ms ease;
     transition: transform 300ms ease, -webkit-transform 300ms ease;
