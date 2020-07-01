@@ -1,4 +1,4 @@
-import {formatDate, formatTemperature} from "helpers"
+import {displaySpeed, formatDate, formatTemperature} from "helpers"
 
 describe("formatDate", () => {
 	it("Should call locale string to format date", () => {
@@ -16,13 +16,25 @@ describe("formatDate", () => {
 })
 
 describe("formatTemperature", () => {
-  it("returns the rounded temperature in Celcius if isMetric is false", () => {
+  it("returns the rounded temperature in Celcius if isMetric is true", () => {
     const temp = formatTemperature(350.45, false)
     expect(temp).toEqual(177)
   })
 
-  it("returns the rounded temperature in Fahrenheit if isMetric is true", () => {
+  it("returns the rounded temperature in Fahrenheit if isMetric is false", () => {
     const temp = formatTemperature(350.45, true)
     expect(temp).toEqual(350)
+  })
+})
+
+describe("displaySpeed", () => {
+  it("returns the rounded speed in km/h if isMetric is true", () => {
+    const speed = displaySpeed(12.345, true)
+    expect(speed).toEqual(12)
+  })
+
+  it("returns the rounded speed in mph if isMetric is false", () => {
+    const speed = displaySpeed(12.345, false)
+    expect(speed).toEqual(8)
   })
 })
