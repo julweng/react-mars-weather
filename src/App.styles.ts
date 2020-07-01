@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components"
+import styled, { createGlobalStyle, keyframes } from "styled-components"
 
 type BGImage = string
 
@@ -50,14 +50,14 @@ export const GlobalStyle = createGlobalStyle`
   a:hover {
     color: var(--clr-accent-dark);
   }
-`;
+`
 
 export const AppWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
-`;
+`
 
 export const MarsWeather = styled.main`
   background: rgba(0, 0, 0, 0.7);
@@ -83,9 +83,32 @@ export const MarsWeather = styled.main`
     margin: 0;
     color: var(--clr-gray);
   }
-`;
+`
 
 export const InfoWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+`
+
+const rotate360 = keyframes`
+from {
+  transform: rotate(0deg);
+}
+to {
+  transform: rotate(360deg);
+}
+`
+
+export const Spinner = styled.div`
+  animation: ${rotate360} 1s linear infinite;
+  transform: translateZ(0);
+
+  border-top: 2px solid grey;
+  border-right: 2px solid grey;
+  border-bottom: 2px solid grey;
+  border-left: 4px solid black;
+  background: transparent;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
 `
