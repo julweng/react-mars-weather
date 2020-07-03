@@ -23,7 +23,8 @@ const App = () => {
     const fetchFromAPI = async () => {
       // first "await": wait for data to be retrieved from API
       // second "await": wait for data to be converted to json
-      const weather = await (await fetch(API_URL)).json()
+      const res = await fetch(API_URL)
+      const weather = await res.json()
       const marsWeather = weather.sol_keys.map((key: string) => {
         return {
           sol: key,
@@ -47,10 +48,10 @@ const App = () => {
   return (
     <>
       <GlobalStyle bgImage={BGImage} />
-      <AppWrapper>
-        <MarsWeather>
+      <AppWrapper data-testid="app-wrapper">
+        <MarsWeather data-testid="mars-weather">
           {loading ? (
-            <Spinner />
+            <Spinner data-testid="spinner" />
           ) : (
             <>
               <h1 className="main-title">
